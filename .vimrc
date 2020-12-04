@@ -14,17 +14,14 @@ call plug#begin('~/.vim/plugged')
 " Show git file changes in the gutter.
 Plug 'mhinz/vim-signify'
 
-" Handle surrounding characters easily
-Plug 'tpope/vim-surround'
-
-" Git integration within Vim
-Plug 'tpope/vim-fugitive'
-
 " New colorscheme
 Plug 'morhetz/gruvbox'
 
 " File explorer
 Plug 'preservim/nerdtree'
+
+" Aucomplete
+Plug 'davidhalter/jedi-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -47,6 +44,7 @@ set incsearch
 set magic
 syntax enable
 set updatetime=50
+set backspace=indent,eol,start
 
 set termguicolors
 
@@ -56,9 +54,6 @@ set shortmess+=c
 
 set hidden
 set encoding=utf8
-set expandtab
-set smarttab
-set smartindent
 set wrap
 set laststatus=2
 
@@ -113,11 +108,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=4 softtabstop=4
-
-""""""""""""""""""""""""""""""""""""""""""
-"""""""""""""" VIM-SURROUND """"""""""""""
-""""""""""""""""""""""""""""""""""""""""""
-let g:surround_100 = "{{ \r }}"
+autocmd FileType python setlocal autoindent expandtab shiftwidth=4 softtabstop=4
 
 """"""""""""""""""""""""""""""""""""""""""
 """""""""""""""" NERDTREE """"""""""""""""
@@ -148,21 +139,4 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
-
-" Auto closing with matching brackets
-inoremap ( ()<C-G>U<Left>
-inoremap [ []<C-G>U<Left>
-inoremap { {}<C-G>U<Left>
-inoremap " ""<C-G>U<Left>
-inoremap ' ''<C-G>U<Left>
-
-" Vim fugitive mappings
-nnoremap <leader>gst :Gstatus<CR>
-nnoremap <leader>gci :Gcommit<CR>
-nnoremap <leader>gpush :Gpush<CR>
-nnoremap <leader>gpull :Gpull<CR>
-nnoremap <leader>gf :Gfetch<CR>
-nmap <leader>gj :diffget //3<CR>
-nmap <leader>gf :diffget //2<CR>
-
 
