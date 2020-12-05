@@ -31,50 +31,37 @@ call plug#end()
 " Settings
 " -----------------------------------------------------------------------------
 
-set nocompatible
-set nu
-set rnu
-set noshowmatch
-set wildmenu
-set wildignore=*.o,*~,*.pyc
-set noerrorbells
+" Enabling filetype support provides filetype-specific indenting,
+" " syntax highlighting, omni-completion and other useful settings.
+filetype plugin indent on
+syntax on
+set number					" Show line number
+set relativenumber			" Show relative line number
+set noshowmatch				" Show matching bracket
+set wildmenu				" Change completion menu behavior
+set wildignore=*.o,*~,*.pyc	" Ignore certain file patterns
+set noerrorbells			" No error bells...
 set smartcase
-set nohlsearch
-set incsearch
-set magic
-syntax enable
+set incsearch				" Show all matching patterns in file
 set updatetime=50
-set backspace=indent,eol,start
-
-set termguicolors
-
-set complete+=kspell
-set completeopt=menuone,longest
-set shortmess+=c
-
-set hidden
+set backspace=indent,eol,start " Make backspace work as it should
 set encoding=utf8
-set wrap
-set laststatus=2
-
+set wrap					" Wrap text, does not change buffer
+set laststatus=2			" Always show status line
+set hidden					" Possibility to have more than one unsaved buffers
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
-
-set colorcolumn=80
-set cursorline
+set colorcolumn=80			" Vertical line at char 80
+set cursorline				" Horizontal line at cursor line
+set scrolloff=3 " Keep 3 lines below and above the cursor
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
+" Spliting below and right when issuing :split and :vsplit
 set splitbelow
 set splitright
 
-set scrolloff=3 " Keep 3 lines below and above the cursor
-
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank("IncSearch", 50)
-augroup END
 
 " Remove trailing white-space
 fun! TrimWhitespace()
@@ -98,19 +85,6 @@ endif
 let g:gruvbox_invert_selection='0'
 
 """"""""""""""""""""""""""""""""""""""""""
-"""""""""""""" INDENTATION """""""""""""""
-""""""""""""""""""""""""""""""""""""""""""
-" Use autocmd as long as we have only few file types, else switch to cleaner
-" specific files per filetype, see
-" https://stackoverflow.com/questions/158968/changing-vim-indentation-behavior-by-file-type
-" https://vim.fandom.com/wiki/Indenting_source_code
-set tabstop=4 softtabstop=4
-set shiftwidth=4
-autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType json setlocal expandtab shiftwidth=4 softtabstop=4
-autocmd FileType python setlocal autoindent expandtab shiftwidth=4 softtabstop=4
-
-""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""" NERDTREE """"""""""""""""
 """"""""""""""""""""""""""""""""""""""""""
 " Leave Vim when the only buffer open is a NerdTree tab
@@ -120,19 +94,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Keymaps
 " -----------------------------------------------------------------------------
 
-" Avoid bad reflexes
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
 let mapleader = " "
-
-nnoremap <leader>u :UndotreeShow<CR>
-nnoremap <leader>of :Files<CR>
-nnoremap <leader>ff :Rg<CR>
-
 nnoremap <leader>e :NERDTreeToggle<CR>
+
+" Going back to normal mode with jk in insert or visual mode
+:imap jk <Esc>
+:xmap jk <Esc>
 
 " Window commands
 nnoremap <leader>h :wincmd h<CR>
