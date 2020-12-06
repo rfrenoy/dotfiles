@@ -20,6 +20,12 @@ Plug 'morhetz/gruvbox'
 " File explorer
 Plug 'preservim/nerdtree'
 
+" Asynchronous Lint Engine
+Plug 'dense-analysis/ale'
+
+" Shiny status line
+Plug 'vim-airline/vim-airline'
+
 call plug#end()
 
 
