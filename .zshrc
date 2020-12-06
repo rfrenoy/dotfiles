@@ -1,8 +1,5 @@
-
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
-export PATH=$PATH:/usr/local/miniconda3/bin
-export PIPENV_VENV_IN_PROJECT=1
 export LANG=en_US.utf-8
 export LC_ALL=en_US.utf-8
 
@@ -39,9 +36,6 @@ if [ -f '/Users/remy.frenoy/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rem
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/remy.frenoy/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/remy.frenoy/google-cloud-sdk/completion.zsh.inc'; fi
-. /usr/local/miniconda3/etc/profile.d/conda.sh
-
-# curl wttr.in/Paris
 
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
