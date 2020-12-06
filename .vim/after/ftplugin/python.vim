@@ -11,9 +11,10 @@ let g:airline#extensions#ale#enabled = 1
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
-" Remapping fixes
+" Remapping ALE actions
 nnoremap <silent> <leader>ff :ALEFix<CR>
 nnoremap <silent> <leader>gd :ALEGoToDefinition<CR>
+nnoremap <silent> <leader>rv :ALERename<CR>
 
 " Enable completion
 let g:ale_completion_enabled = 1
@@ -22,5 +23,3 @@ let g:ale_completion_autoimport = 1
 " Trigger completion with C-x X-o
 set omnifunc=ale#completion#OmniFunc
 
-" Trigger information display at cursor
-let g:ale_hover_cursor = 1
