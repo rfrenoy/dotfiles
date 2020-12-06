@@ -20,10 +20,6 @@ Plug 'morhetz/gruvbox'
 " File explorer
 Plug 'preservim/nerdtree'
 
-" Aucomplete
-Plug 'davidhalter/jedi-vim'
-
-" Initialize plugin system
 call plug#end()
 
 
@@ -35,27 +31,27 @@ call plug#end()
 " " syntax highlighting, omni-completion and other useful settings.
 filetype plugin indent on
 syntax on
-set number					" Show line number
+set number				" Show line number
 set relativenumber			" Show relative line number
 set noshowmatch				" Show matching bracket
 set wildmenu				" Change completion menu behavior
-set wildignore=*.o,*~,*.pyc	" Ignore certain file patterns
+set wildignore=*.o,*~,*.pyc		" Ignore certain file patterns
 set noerrorbells			" No error bells...
 set smartcase
 set incsearch				" Show all matching patterns in file
 set updatetime=50
-set backspace=indent,eol,start " Make backspace work as it should
+set backspace=indent,eol,start 		" Make backspace work as it should
 set encoding=utf8
-set wrap					" Wrap text, does not change buffer
+set wrap				" Wrap text, does not change buffer
 set laststatus=2			" Always show status line
-set hidden					" Possibility to have more than one unsaved buffers
+set hidden				" Possibility to have more than one unsaved buffers
 set noswapfile
 set nobackup
 set undodir=~/.vim/undodir
 set undofile
 set colorcolumn=80			" Vertical line at char 80
 set cursorline				" Horizontal line at cursor line
-set scrolloff=3 " Keep 3 lines below and above the cursor
+set scrolloff=3				" Keep 3 lines below and above the cursor
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 " Spliting below and right when issuing :split and :vsplit
@@ -98,8 +94,8 @@ let mapleader = " "
 nnoremap <leader>e :NERDTreeToggle<CR>
 
 " Going back to normal mode with jk in insert or visual mode
-:imap jk <Esc>
-:xmap jk <Esc>
+:inoremap jk <Esc>
+:xnoremap jk <Esc>
 
 " Window commands
 nnoremap <leader>h :wincmd h<CR>
