@@ -20,6 +20,11 @@ nnoremap <silent> <leader>rv :ALERename<CR>
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
 
-" Trigger completion with C-x X-o
+" Trigger completion with C-x C-o
 set omnifunc=ale#completion#OmniFunc
 
+" Run current script
+nnoremap <leader>R :!python %<CR>
+
+" Run current test file
+nnoremap <leader>T :!python -m unittest %<CR>
