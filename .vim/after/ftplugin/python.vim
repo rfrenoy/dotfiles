@@ -20,6 +20,10 @@ nnoremap <silent> <leader>rv :ALERename<CR>
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
 
+" Lint on file save
+let g:ale_lint_on_save = 1
+
+
 " Trigger completion with C-x C-o
 set omnifunc=ale#completion#OmniFunc
 
