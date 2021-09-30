@@ -1,0 +1,30 @@
+<leader> e: NERDTreeToggle
+
+F5	    <Plug>VimspectorContinue
+F3 	    <Plug>VimspectorStop 	Stop debugging.
+F4 	    <Plug>VimspectorRestart 	Restart debugging with the same configuration.
+F6 	    <Plug>VimspectorPause 	Pause debuggee.
+F9          <Plug>VimspectorToggleBreakpoint 	Toggle line breakpoint on the current line.
+<leader>F9  <Plug>VimspectorToggleConditionalBreakpoint 	Toggle conditional line breakpoint or logpoint on the current line.
+F8          <Plug>VimspectorAddFunctionBreakpoint 	Add a function breakpoint for the expression under cursor
+<leader>F8  <Plug>VimspectorRunToCursor 	Run to Cursor
+F10         <Plug>VimspectorStepOver 	Step Over
+F11         <Plug>VimspectorStepInto 	Step Into
+F12         <Plug>VimspectorStepOut 	Step out of current function scope
+
+<C-w>s	    Horizontal split
+<C-w>v      Vertical split
+<C-w>c	    Close active window
+<C-w>o      Close all but active window
+<C-w>=      Equalize width and height of all windows
+<C-w>_      Maximize height of the active window
+<C-w>|      Maximize width of the active window
+
+:lcd {path} Change working directory to path for current window
+:windo lcd {path} Change working dir for all windows in current page
+:tabedit {filename} Open tab with filename or emtpy buffer if no filename is provided
+<C-w>T	    Move current window in a new tab
+:tabclose   Close tab with all its windows
+:tabonly    Close all tabs but current one
+{N}gt       Switch to tab page nb N (next if gt)
+gT          Switch to previous tab
