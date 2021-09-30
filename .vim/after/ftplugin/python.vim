@@ -14,15 +14,15 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 " Remapping ALE actions
 nnoremap <silent> <leader>ff :ALEFix<CR>
 nnoremap <silent> <leader>gd :ALEGoToDefinition<CR>
-nnoremap <silent> <leader>rv :ALERename<CR>
+nnoremap <silent> <leader>rr :ALERename<CR>
+nnoremap <silent> <leader>fr :ALEFindReferences<CR>
+nnoremap <silent> <leader>tt :ALEToggle<CR>
+nnoremap <silent> <leader>ss :ALESymbolSearch<CR>
+nnoremap <silent> <leader>hh :ALEHover<CR>
 
 " Enable completion
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
-
-" Lint on file save
-let g:ale_lint_on_save = 1
-
 
 " Trigger completion with C-x C-o
 set omnifunc=ale#completion#OmniFunc
