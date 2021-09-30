@@ -26,6 +26,9 @@ Plug 'dense-analysis/ale'
 " Shiny status line
 Plug 'vim-airline/vim-airline'
 
+" Debugging plugin
+Plug 'puremourning/vimspector'
+
 call plug#end()
 
 
@@ -83,6 +86,20 @@ let g:gruvbox_invert_selection='0'
 """"""""""""""""""""""""""""""""""""""""""
 " Leave Vim when the only buffer open is a NerdTree tab
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""" VIMSPECTOR """""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
+let g:vimspector_enable_mappings = 'HUMAN'
+" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
+nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
+nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
+
 
 " -----------------------------------------------------------------------------
 " Keymaps
