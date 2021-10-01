@@ -88,28 +88,6 @@ let g:gruvbox_invert_selection='0'
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
-""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""" VIMSPECTOR """""""""""""""
-""""""""""""""""""""""""""""""""""""""""""
-" 'ds' = debug start
-nnoremap <leader>ds :call vimspector#Launch()<CR>
-nnoremap <leader>dR :call vimspector#Reset()<CR>
-nnoremap <leader>dc :call vimspector#Continue()<CR>
-
-nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<CR>
-nnoremap <leader>dT :call vimspector#ClearBreakpoints()<CR>
-
-nmap <leader>dk <Plug>VimspectorRestart
-nmap <leader>dh <Plug>VimspectorStepOut
-nmap <leader>dl <Plug>VimspectorStepInto
-nmap <leader>dj <Plug>VimspectorStepOver
-
-" 'di' = 'debug inspect' (pick your own, if you prefer!)
-nmap <leader>di <Plug>VimspectorBalloonEval
-nmap <leader>dU <Plug>VimspectorUpFrame
-nmap <leader>dD <Plug>VimspectorDownFrame
-
-
 " -----------------------------------------------------------------------------
 " Keymaps
 " -----------------------------------------------------------------------------
@@ -126,4 +104,23 @@ nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+nnoremap <leader>c :wincmd c<CR>
+nnoremap <leader>w :wincmd w<CR>
+
+" VIMSPECTOR
+" 'ds' = debug start
+nnoremap <leader>ds :call vimspector#Launch()<CR>
+nnoremap <leader>dr :call vimspector#Reset()<CR>
+nnoremap <leader>dc :call vimspector#Continue()<CR>
+nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <leader>dT :call vimspector#ClearBreakpoints()<CR>
+nmap <leader>dk <Plug>VimspectorRestart
+nmap <leader>dh <Plug>VimspectorStepOut
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+" 'di' = 'debug inspect' (pick your own, if you prefer!)
+nmap <leader>di <Plug>VimspectorBalloonEval
+nmap <leader>dU <Plug>VimspectorUpFrame
+nmap <leader>dD <Plug>VimspectorDownFrame
+
 
