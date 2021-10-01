@@ -16,11 +16,11 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Remapping ALE actions
 nnoremap <silent> <leader>ff :ALEFix<CR>
-nnoremap <silent> <leader>gd :ALEGoToDefinition<CR>
-nnoremap <silent> <leader>rr :ALERename<CR>
-nnoremap <silent> <leader>fr :ALEFindReferences<CR>
-nnoremap <silent> <leader>tt :ALEToggle<CR>
-nnoremap <silent> <leader>hh :ALEHover<CR>
+nnoremap <silent> <leader>ag :ALEGoToDefinition<CR>
+nnoremap <silent> <leader>ar :ALERename<CR>
+nnoremap <silent> <leader>af :ALEFindReferences<CR>
+nnoremap <silent> <leader>at :ALEToggle<CR>
+nnoremap <silent> <leader>ah :ALEHover<CR>
 
 " Enable completion
 let g:ale_completion_enabled = 1

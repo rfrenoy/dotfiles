@@ -91,14 +91,23 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 """"""""""""""""""""""""""""""""""""""""""
 """"""""""""""" VIMSPECTOR """""""""""""""
 """"""""""""""""""""""""""""""""""""""""""
-let g:vimspector_enable_mappings = 'HUMAN'
-" mnemonic 'di' = 'debug inspect' (pick your own, if you prefer!)
-" for normal mode - the word under the cursor
-nmap <Leader>di <Plug>VimspectorBalloonEval
-" for visual mode, the visually selected text
-xmap <Leader>di <Plug>VimspectorBalloonEval
-nmap <LocalLeader><F11> <Plug>VimspectorUpFrame
-nmap <LocalLeader><F12> <Plug>VimspectorDownFrame
+" 'ds' = debug start
+nnoremap <leader>ds :call vimspector#Launch()<CR>
+nnoremap <leader>dR :call vimspector#Reset()<CR>
+nnoremap <leader>dc :call vimspector#Continue()<CR>
+
+nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<CR>
+nnoremap <leader>dT :call vimspector#ClearBreakpoints()<CR>
+
+nmap <leader>dk <Plug>VimspectorRestart
+nmap <leader>dh <Plug>VimspectorStepOut
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dj <Plug>VimspectorStepOver
+
+" 'di' = 'debug inspect' (pick your own, if you prefer!)
+nmap <leader>di <Plug>VimspectorBalloonEval
+nmap <leader>dU <Plug>VimspectorUpFrame
+nmap <leader>dD <Plug>VimspectorDownFrame
 
 
 " -----------------------------------------------------------------------------
