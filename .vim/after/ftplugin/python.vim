@@ -1,3 +1,6 @@
+" Install vimspector python gadget if necessary
+let g:vimspector_install_gadgets = ['debugpy']
+
 " Check Python files with flake8 and pylint.
 let b:ale_linters = ['pyls', 'flake8', 'pylint']
 
@@ -17,7 +20,6 @@ nnoremap <silent> <leader>gd :ALEGoToDefinition<CR>
 nnoremap <silent> <leader>rr :ALERename<CR>
 nnoremap <silent> <leader>fr :ALEFindReferences<CR>
 nnoremap <silent> <leader>tt :ALEToggle<CR>
-nnoremap <silent> <leader>ss :ALESymbolSearch<CR>
 nnoremap <silent> <leader>hh :ALEHover<CR>
 
 " Enable completion
@@ -28,7 +30,7 @@ let g:ale_completion_autoimport = 1
 set omnifunc=ale#completion#OmniFunc
 
 " Run current script
-nnoremap <leader>R :!python %<CR>
+nnoremap <leader>R :term python %<CR>
 
 " Run current test file
-nnoremap <leader>T :!python -m unittest %<CR>
+nnoremap <leader>T :term python -m unittest %<CR>
