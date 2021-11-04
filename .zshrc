@@ -15,7 +15,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z)
+if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
+
+plugins=(git z osx zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -31,11 +33,4 @@ alias sa="source activate"
 alias jn="jupyter notebook"
 alias dc="docker-compose"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/remy.frenoy/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/remy.frenoy/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/remy.frenoy/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/remy.frenoy/google-cloud-sdk/completion.zsh.inc'; fi
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/terraform terraform
+# autoload -U +X bashcompinit && bashcompinit
