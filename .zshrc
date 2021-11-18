@@ -15,9 +15,9 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-if [ ! -d "${HOME}/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions; fi
+if [ ! -d "${ZSH}/custom/plugins/zsh-autosuggestions" ]; then git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH/custom/plugins/zsh-autosuggestions; fi
 
-plugins=(git z osx zsh-autosuggestions)
+plugins=(git z macos zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -34,3 +34,5 @@ alias jn="jupyter notebook"
 alias dc="docker-compose"
 
 # autoload -U +X bashcompinit && bashcompinit
+
+export PATH="$HOME/.poetry/bin:$PATH"
