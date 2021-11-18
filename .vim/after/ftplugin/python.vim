@@ -2,7 +2,7 @@
 let g:vimspector_install_gadgets = ['debugpy']
 
 " Check Python files with flake8 and pylint.
-let b:ale_linters = ['pyls', 'flake8', 'pylint']
+let b:ale_linters = ['pylsp', 'flake8', 'pylint']
 
 " Fix Python files with autopep8 and yapf.
 let b:ale_fixers = ['autopep8', 'yapf']
