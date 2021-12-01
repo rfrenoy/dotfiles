@@ -34,3 +34,5 @@ nnoremap <leader>R :term python %<CR>
 
 " Run current test file
 nnoremap <leader>T :term python -m unittest %<CR>
+nnoremap <leader>t :term pytest<CR>
+
