@@ -29,6 +29,9 @@ Plug 'vim-airline/vim-airline'
 " Debugging plugin
 Plug 'puremourning/vimspector'
 
+" Show keybindings
+Plug 'liuchengxu/vim-which-key'
+
 call plug#end()
 
 
@@ -93,6 +96,12 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " -----------------------------------------------------------------------------
 
 let mapleader = " "
+
+" Making leader then nothing show keybindings possibilities
+nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
+call which_key#register('<Space>', "g:which_key_map")
+let g:which_key_map = {}
+
 nnoremap <leader>e :NERDTreeToggle<CR>
 
 " Going back to normal mode with jk in insert or visual mode
@@ -101,20 +110,33 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 
 " Window commands
 nnoremap <leader>h :wincmd h<CR>
+let g:which_key_map.h = 'Go to left window'
 nnoremap <leader>j :wincmd j<CR>
+let g:which_key_map.j = 'Go to down window'
 nnoremap <leader>k :wincmd k<CR>
+let g:which_key_map.k = 'Go to up window'
 nnoremap <leader>l :wincmd l<CR>
+let g:which_key_map.l = 'Go to right window'
 nnoremap <leader>c :wincmd c<CR>
+let g:which_key_map.c = 'Close window'
 nnoremap <leader>w :wincmd w<CR>
+
 
 " VIMSPECTOR
 " 'ds' = debug start
+let g:which_key_map.d = { 'name' : '+Debug' }
 nnoremap <leader>ds :call vimspector#Launch()<CR>
-nnoremap <leader>dr :call vimspector#Reset()<CR>
+let g:which_key_map.d.s = 'Start debugger'
+nnoremap <leader>dq :call vimspector#Reset()<CR>
+let g:which_key_map.d.q = 'Quit debugger'
 nnoremap <leader>dc :call vimspector#Continue()<CR>
+let g:which_key_map.d.c = 'Continue'
 nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<CR>
+let g:which_key_map.d.t = 'Toggle breakpoint'
 nnoremap <leader>dT :call vimspector#ClearBreakpoints()<CR>
+let g:which_key_map.d.R = 'Clear breakpoints'
 nmap <leader>dk <Plug>VimspectorRestart
+let g:which_key_map.d.dk = 'Restart debugger'
 nmap <leader>dh <Plug>VimspectorStepOut
 nmap <leader>dl <Plug>VimspectorStepInto
 nmap <leader>dj <Plug>VimspectorStepOver
@@ -122,5 +144,4 @@ nmap <leader>dj <Plug>VimspectorStepOver
 nmap <leader>di <Plug>VimspectorBalloonEval
 nmap <leader>dU <Plug>VimspectorUpFrame
 nmap <leader>dD <Plug>VimspectorDownFrame
-
 
