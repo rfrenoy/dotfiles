@@ -5,6 +5,7 @@
   :config
   (use-package lsp-ui)
   :hook ((python-mode . lsp-deferred)
+	 (clojure-mode . lsp-deferred)
          (lsp-mode . lsp-enable-which-key-integration))
   :commands (lsp lsp-deferred))
 
@@ -33,6 +34,7 @@
   :commands yas-minor-mode
   :hook (
          (python-mode . yas-minor-mode)
+	 (clojure-mode . yas-minor-mode)
          ))
 
 (setq lsp-ui-doc-enable t

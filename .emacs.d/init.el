@@ -1,9 +1,12 @@
 (add-to-list 'load-path (concat user-emacs-directory "elisp"))
 (require 'base)
+(require 'project_mgt)
 (require 'theme)
 (require 'vim)
 (require 'completion)
 (require 'lang)
 (require 'lang-python)
+(require 'lang-clojure)
+(require 'git)
 (provide 'init)
 ;;; init.el ends here
