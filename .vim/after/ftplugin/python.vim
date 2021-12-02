@@ -5,7 +5,7 @@ let g:vimspector_install_gadgets = ['debugpy']
 let b:ale_linters = ['pyright', 'flake8', 'pylint']
 
 " Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8', 'yapf']
+let b:ale_fixers = ['yapf']
 
 " Integration with vim-airline plugin
 let g:airline#extensions#ale#enabled = 1
@@ -25,6 +25,7 @@ nnoremap <silent> <leader>ah :ALEHover<CR>
 " Enable completion
 let g:ale_completion_enabled = 1
 let g:ale_completion_autoimport = 1
+let g:ale_completion_delay = 10
 
 " Trigger completion with C-x C-o
 set omnifunc=ale#completion#OmniFunc

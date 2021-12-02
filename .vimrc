@@ -32,6 +32,12 @@ Plug 'puremourning/vimspector'
 " Show keybindings
 Plug 'liuchengxu/vim-which-key'
 
+" Asynchronous completion in neovim
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  let g:deoplete#enable_at_startup = 1
+endif
+
 call plug#end()
 
 
