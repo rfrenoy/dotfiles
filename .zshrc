@@ -32,6 +32,7 @@ source $ZSH/oh-my-zsh.sh
 alias sa="source activate"
 alias jn="jupyter notebook"
 alias dc="docker-compose"
+alias vim="nvim"
 
 # autoload -U +X bashcompinit && bashcompinit
 
