@@ -123,7 +123,8 @@ nnoremap <leader>k :wincmd k<CR>
 let g:which_key_map.k = 'Go to up window'
 nnoremap <leader>l :wincmd l<CR>
 let g:which_key_map.l = 'Go to right window'
-nnoremap <leader>c :wincmd c<CR>
+" Make leader+C close buffer without closing window
+nnoremap <leader>c :bp<bar>sp<bar>bn<bar>bd<CR>
 let g:which_key_map.c = 'Close window'
 nnoremap <leader>w :wincmd w<CR>
 
