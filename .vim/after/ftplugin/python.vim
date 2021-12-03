@@ -15,12 +15,25 @@ nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 " Remapping ALE actions
-nnoremap <silent> <leader>ff :ALEFix<CR>
+let g:which_key_map.a = { 'name' : '+ALE' }
+
+nnoremap <silent> <leader>aF :ALEFix<CR>
+let g:which_key_map.a.F = 'ALE Fix'
+
 nnoremap <silent> <leader>ag :ALEGoToDefinition<CR>
+let g:which_key_map.a.g = 'ALE Go to Definition'
+
 nnoremap <silent> <leader>ar :ALERename<CR>
+let g:which_key_map.a.r = 'ALE Rename'
+
 nnoremap <silent> <leader>af :ALEFindReferences<CR>
+let g:which_key_map.a.f = 'ALE Find References'
+
 nnoremap <silent> <leader>at :ALEToggle<CR>
+let g:which_key_map.a.t = 'ALE Toggle'
+
 nnoremap <silent> <leader>ah :ALEHover<CR>
+let g:which_key_map.a.h = 'ALE Hover'
 
 " Enable completion
 let g:ale_completion_enabled = 1

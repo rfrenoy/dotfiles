@@ -76,7 +76,6 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 set splitbelow
 set splitright
 
-
 """"""""""""""""""""""""""""""""""""""""""
 """""""""""""""" GRUVBOX """""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""
@@ -108,6 +107,7 @@ nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 call which_key#register('<Space>', "g:which_key_map")
 let g:which_key_map = {}
 
+" Map Nerdtree on leader+e
 nnoremap <leader>e :NERDTreeToggle<CR>
 
 " Going back to normal mode with jk in insert or visual mode
@@ -132,23 +132,40 @@ nnoremap <leader>w :wincmd w<CR>
 " VIMSPECTOR
 " 'ds' = debug start
 let g:which_key_map.d = { 'name' : '+Debug' }
+
 nnoremap <leader>ds :call vimspector#Launch()<CR>
 let g:which_key_map.d.s = 'Start debugger'
+
 nnoremap <leader>dq :call vimspector#Reset()<CR>
 let g:which_key_map.d.q = 'Quit debugger'
+
 nnoremap <leader>dc :call vimspector#Continue()<CR>
 let g:which_key_map.d.c = 'Continue'
+
 nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<CR>
 let g:which_key_map.d.t = 'Toggle breakpoint'
+
 nnoremap <leader>dT :call vimspector#ClearBreakpoints()<CR>
-let g:which_key_map.d.R = 'Clear breakpoints'
+let g:which_key_map.d.T = 'Clear breakpoints'
+
 nmap <leader>dk <Plug>VimspectorRestart
-let g:which_key_map.d.dk = 'Restart debugger'
+let g:which_key_map.d.k = 'Restart debugger'
+
 nmap <leader>dh <Plug>VimspectorStepOut
+let g:which_key_map.d.h = 'Step Out'
+
 nmap <leader>dl <Plug>VimspectorStepInto
+let g:which_key_map.d.l = 'Step Into'
+
 nmap <leader>dj <Plug>VimspectorStepOver
+let g:which_key_map.d.j = 'Step Over'
+
 " 'di' = 'debug inspect' (pick your own, if you prefer!)
 nmap <leader>di <Plug>VimspectorBalloonEval
-nmap <leader>dU <Plug>VimspectorUpFrame
-nmap <leader>dD <Plug>VimspectorDownFrame
+let g:which_key_map.d.i = 'Eval at point'
 
+nmap <leader>dU <Plug>VimspectorUpFrame
+let g:which_key_map.d.U = 'Up Frame'
+
+nmap <leader>dD <Plug>VimspectorDownFrame
+let g:which_key_map.d.D = 'Down Frame'
