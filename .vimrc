@@ -76,6 +76,7 @@ highlight ColorColumn ctermbg=0 guibg=lightgrey
 set splitbelow
 set splitright
 
+
 """"""""""""""""""""""""""""""""""""""""""
 """""""""""""""" GRUVBOX """""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""
@@ -114,6 +115,13 @@ nnoremap <leader>e :NERDTreeToggle<CR>
 :inoremap jk <Esc>
 :xnoremap jk <Esc>
 
+" Make Y yank until end of line
+nnoremap Y ^y$
+nnoremap <leader>p o<ESC>p
+let g:which_key_map.p = 'Paste in new line below'
+nnoremap <leader>P O<ESC>p
+let g:which_key_map.P = 'Paste in new line above'
+
 " Window commands
 nnoremap <leader>h :wincmd h<CR>
 let g:which_key_map.h = 'Go to left window'
@@ -124,7 +132,7 @@ let g:which_key_map.k = 'Go to up window'
 nnoremap <leader>l :wincmd l<CR>
 let g:which_key_map.l = 'Go to right window'
 " Make leader+C close buffer without closing window
-nnoremap <leader>c :bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <leader>c :bp<bar>sp<bar>bn<bar>bd<bar>bn<CR>
 let g:which_key_map.c = 'Close window'
 nnoremap <leader>w :wincmd w<CR>
 
