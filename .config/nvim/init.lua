@@ -1,2 +1,4 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-require("config.lazy")
+require("core.mappings")
+require("core.lazy")
+
+vim.cmd.colorscheme "catppuccin-latte"
