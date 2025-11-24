@@ -3,6 +3,7 @@ return {
     cmd = 'Telescope',
     dependencies = {
         'nvim-lua/plenary.nvim',
+	'BurntSushi/ripgrep',
     },
     keys = function()
         local lazy_telescope = function(builtin)
@@ -23,4 +24,46 @@ return {
         }
     end,
     config = true,
+    opts = function()
+	local function find_command()
+            if 1 == vim.fn.executable("rg") then
+              return { "rg", "--files", "--color", "never", "-g", "!.git" }
+            elseif 1 == vim.fn.executable("fd") then
+              return { "fd", "--type", "f", "--color", "never", "-E", ".git" }
+            elseif 1 == vim.fn.executable("fdfind") then
+              return { "fdfind", "--type", "f", "--color", "never", "-E", ".git" }
+            elseif 1 == vim.fn.executable("find") and vim.fn.has("win32") == 0 then
+              return { "find", ".", "-type", "f" }
+            elseif 1 == vim.fn.executable("where") then
+              return { "where", "/r", ".", "*" }
+            end
+        end
+
+	return {
+            defaults = {
+                vimgrep_arguments = {
+                    "rg",
+                    "--color=never",
+                    "--no-heading",
+                    "--with-filename",
+                    "--line-number",
+                    "--column",
+                    "--smart-case",
+                    "--hidden",  -- Search hidden files
+                    "--glob=!.git/",  -- Exclude .git directory
+                },
+            },
+            pickers = {
+                find_files = {
+                  find_command = find_command(),
+                  hidden = true,
+                },
+                live_grep = {
+                    additional_args = function()
+                        return { "--hidden", "--glob=!.git/" }
+                    end,
+                },
+            },
+        }
+    end,
 }
