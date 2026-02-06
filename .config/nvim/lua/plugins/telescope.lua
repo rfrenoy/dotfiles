@@ -21,6 +21,7 @@ return {
             { '<leader>fo', lazy_telescope('oldfiles'),                  desc = 'Find recently opened files' },
             { '<leader>fw', lazy_telescope('grep_string'),               desc = 'Find word in buffer' },
             { '<leader>b/', lazy_telescope('current_buffer_fuzzy_find'), desc = 'Find fuzzy match in current buffer' },
+            { '<leader>fc', lazy_telescope('commands'), desc = 'Find commands' },
         }
     end,
     config = true,

@@ -5,7 +5,7 @@ return {
   keys = {
     { "<leader>gb", function() require("gitsigns").blame_line({ full = true }) end, desc = "Git blame line" },
     {
-      "<leader>gO",
+      "<leader>go",
       function()
         local file = vim.fn.expand("%")
         local line = vim.fn.line(".")

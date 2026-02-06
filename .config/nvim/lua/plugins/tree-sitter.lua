@@ -3,11 +3,15 @@ return {
   branch = "master",
   lazy = false,
   build = ":TSUpdate",
-  opts = {
-    ensure_installed = {
-      "markdown",
-      "markdown_inline",
-      "typescript",
-    },
-  },
+  config = function()
+    require("nvim-treesitter.configs").setup({
+      ensure_installed = {
+        "markdown",
+        "markdown_inline",
+        "typescript",
+      "tsx",
+      },
+      highlight = { enable = true },
+    })
+  end,
 }
