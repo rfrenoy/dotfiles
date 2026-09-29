@@ -20,7 +20,14 @@ local function align(group)
     vim.api.nvim_win_call(wins[i], function()
       local last = vim.fn.line("$")
       local top = math.min(prev_bot + 1, last)
-      vim.fn.winrestview({ topline = top, lnum = math.min(top + so, last), col = 0 })
+      local lo = math.min(top + so, last)
+      local hi = top + vim.api.nvim_win_get_height(0) - 1 - so
+      local cur = vim.fn.line(".")
+      if cur >= lo and cur <= hi then
+        vim.fn.winrestview({ topline = top })
+      else
+        vim.fn.winrestview({ topline = top, lnum = lo, col = 0 })
+      end
     end)
   end
 
@@ -114,6 +121,65 @@ function M.toggle(count)
   enable(count or 2)
 end
 
+local function focus_line(group, line)
+  local so = vim.o.scrolloff
+  for _, win in ipairs(group.wins) do
+    local top, bot = unpack(vim.api.nvim_win_call(win, function()
+      return { vim.fn.line("w0"), vim.fn.line("w$") }
+    end))
+    if line <= bot then
+      local min = top == 1 and 1 or top + so
+      local max = bot == vim.fn.line("$") and bot or bot - so
+      vim.api.nvim_set_current_win(win)
+      vim.api.nvim_win_set_cursor(win, { math.max(min, math.min(line, max)), 0 })
+      return
+    end
+  end
+end
+
+function M.max()
+  local tab = vim.api.nvim_get_current_tabpage()
+  local group = groups[tab]
+  local win = group and group.wins[1] or vim.api.nvim_get_current_win()
+
+  local width = vim.api.nvim_win_get_width(win)
+  if group then
+    width = #group.wins - 1
+    for _, w in ipairs(group.wins) do
+      width = width + vim.api.nvim_win_get_width(w)
+    end
+  end
+  local height = vim.api.nvim_win_get_height(win)
+  local count = math.ceil(vim.api.nvim_buf_line_count(vim.api.nvim_win_get_buf(win)) / height)
+
+  if count < 2 then
+    vim.notify("MaxColumns: the file already fits in one window", vim.log.levels.INFO)
+    return
+  end
+  if count * (vim.o.winminwidth + 1) - 1 > width then
+    vim.notify(string.format("MaxColumns: %d columns needed, not enough room", count), vim.log.levels.ERROR)
+    return
+  end
+
+  local col_width = math.floor((width - count + 1) / count)
+  vim.api.nvim_echo({ { string.format("Open %d columns (~%d chars wide)? (y/n) ", count, col_width), "Question" } }, false, {})
+  local ok, key = pcall(vim.fn.getcharstr)
+  vim.api.nvim_echo({ { "" } }, false, {})
+  if not ok or key ~= "y" then
+    vim.notify("MaxColumns: cancelled", vim.log.levels.INFO)
+    return
+  end
+
+  local line = vim.api.nvim_win_get_cursor(0)[1]
+  if group then
+    disable(tab)
+    vim.api.nvim_set_current_win(win)
+  end
+  vim.fn.winrestview({ topline = 1, lnum = 1, col = 0 })
+  enable(count)
+  focus_line(groups[tab], line)
+end
+
 vim.api.nvim_create_user_command("Columns", function(opts)
   local count = opts.args ~= "" and tonumber(opts.args) or nil
   if count and count < 2 then
@@ -122,5 +188,7 @@ vim.api.nvim_create_user_command("Columns", function(opts)
   end
   M.toggle(count)
 end, { nargs = "?", desc = "Toggle reading the buffer in N scroll-bound columns" })
+
+vim.api.nvim_create_user_command("MaxColumns", M.max, { desc = "Open as many columns as needed to show the whole buffer" })
 
 return M
