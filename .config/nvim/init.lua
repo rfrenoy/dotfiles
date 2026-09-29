@@ -1,5 +1,6 @@
 require("core.mappings")
 require("core.lazy")
+require("core.columns")
 
 vim.cmd.colorscheme "catppuccin-mocha"
 
