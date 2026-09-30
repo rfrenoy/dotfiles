@@ -82,5 +82,5 @@ vim.g.markdown_recommended_style = 0
 
 vim.filetype.add({ extension = { mdx = "markdown" } })
 
-vim.lsp.enable('ts_ls')
+vim.lsp.enable('tsgo')
 
